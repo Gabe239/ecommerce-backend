@@ -1,0 +1,48 @@
+<body>
+    <h1>User Management</h1>
+
+    <!-- Display a list of users with their roles -->
+    <ul>
+        {{#each users}}
+        <li>
+            <strong>First Name:</strong> {{first_name}}
+        </li>
+        <li>
+            <strong>Last Name:</strong> {{last_name}}
+        </li>
+        <li>
+            <strong>Email:</strong> {{email}}
+        </li>
+        <li>
+            <strong>Age:</strong> {{age}}
+        </li>
+        <li>
+            <strong>Role:</strong> {{role}}
+        </li>
+        <li>
+            <strong>Documents:</strong>
+            <ul>
+                {{#each documents}}
+                <li>{{this}}</li>
+                {{/each}}
+            </ul>
+        </li>
+        <button class="edit-role-button" data-user-id={{_id}}>Edit Role</button>
+        <button class="delete-user-button" data-user-id={{_id}}>Delete User</button>
+
+        {{/each}}
+    </ul>
+    <!-- Role modification form -->
+    <div id="editRoleForm" style="display: none;">
+        <h2>Edit User Role</h2>
+        <label for="newRole">New Role:</label>
+        <select id="newRole" name="newRole">
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+            <option value="premium">Premium</option>
+        </select>
+        <button onclick="saveRole()" id="saveRoleButton">Save</button>
+
+    </div>
+</body>
+<script src="/js/role.js"></script>
